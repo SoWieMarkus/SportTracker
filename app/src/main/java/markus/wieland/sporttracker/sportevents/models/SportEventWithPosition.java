@@ -47,7 +47,7 @@ public class SportEventWithPosition implements Serializable {
     }
 
     public float getCurrentSpeedPerKm() {
-        return (sportEvent.getDuration() / (1000f * 60)) / (getTotalDistance() / 1000f);
+        return (getDuration() / (1000f * 60)) / (getTotalDistance() / 1000f);
     }
 
 }

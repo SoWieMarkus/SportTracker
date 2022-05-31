@@ -1,8 +1,6 @@
 
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-@
-local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 <
@@ -19,18 +17,10 @@ Uapp/src/main/java/markus/wieland/sporttracker/positions/PositionDataAccessObjec
 Napp/src/main/java/markus/wieland/sporttracker/positions/PositionViewModel.java,e\f\ef02b4f294dd474eb89286d7344be53d73502f74
 j
 :app/src/main/java/markus/wieland/sporttracker/MapView.java,7\b\7b1e153d7d44f331d793e36ee8e9f2cdc42442f5
-‰
-Yapp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventDataAccessObject.java,0\9\092de6386a56b863739f9c7343e3824ab82e2c16
 
 Oapp/src/main/java/markus/wieland/sporttracker/positions/PositionRepository.java,b\3\b3236f4b57b45f737d8e11eed263f1bed26d4ffa
-q
-Aapp/src/main/java/markus/wieland/sporttracker/DetailActivity.java,a\6\a6a53e91bb01dcbd02ad239da0d3186f2a2bae95
 ƒ
 Sapp/src/main/java/markus/wieland/sporttracker/sportevents/InsertSportEventTask.java,e\6\e68e982c94aeaadd6ca0482b396e7dde4826da02
-ƒ
-Sapp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventRepository.java,3\5\359a57343d4170fb9d03b19ae2ce2c280b5bc90d
-‚
-Rapp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventViewModel.java,c\2\c2a51e47bb2e1acfc8f2cbbbd4559e359d06b07a
 
 Oapp/src/main/java/markus/wieland/sporttracker/positions/InsertAllItemsTask.java,1\c\1ce2181a8768ce8b9b588e3b02ccff23b391853d
 |
