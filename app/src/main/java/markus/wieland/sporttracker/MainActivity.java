@@ -3,15 +3,23 @@ package markus.wieland.sporttracker;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,12 +30,17 @@ import java.util.Objects;
 
 import markus.wieland.defaultappelements.uielements.activities.DefaultActivity;
 import markus.wieland.sporttracker.positions.PositionViewModel;
+import markus.wieland.sporttracker.positions.models.Position;
 import markus.wieland.sporttracker.sportevents.SportEventAdapter;
 import markus.wieland.sporttracker.sportevents.SportEventListener;
 import markus.wieland.sporttracker.sportevents.database.SportEventViewModel;
 import markus.wieland.sporttracker.sportevents.models.SportEventWithPosition;
 
-public class MainActivity extends DefaultActivity implements Observer<List<SportEventWithPosition>>, NavigationBarView.OnItemSelectedListener, SportEventListener {
+public class MainActivity extends DefaultActivity implements Observer<List<SportEventWithPosition>>, LocationListener, NavigationBarView.OnItemSelectedListener, SportEventListener {
+
+    private static final int LOCATION_REFRESH_TIME = 5000;
+    private static final int LOCATION_REFRESH_DISTANCE = 5;
+    private static final int REQUEST_LOCATION_PERMISSION = 1;
 
     private SportEventViewModel sportEventViewModel;
     private PositionViewModel positionViewModel;
@@ -63,9 +76,38 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
     @Override
     public void execute() {
         sportEventViewModel.getAllSportEvents().observe(this, this);
-
         startActivity(new Intent(this, RunActivity.class));
 
+        registerLocationManager();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != REQUEST_LOCATION_PERMISSION) return;
+        if (grantResults.length == 0) return;
+        for (int result : grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                finish();
+                return;
+            }
+        }
+
+        registerLocationManager();
+    }
+
+    private void registerLocationManager() {
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME, LOCATION_REFRESH_DISTANCE, this);
     }
 
     @Override
@@ -101,21 +143,26 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
 
     @Override
     public void onSportEventStart(SportEventWithPosition sportEventWithPosition) {
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
     public void onSportEventStop(SportEventWithPosition sportEventWithPosition) {
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        long id = sportEventViewModel.insertSportEvent(sportEventWithPosition.getSportEvent());
+        for (Position position: sportEventWithPosition.getPositions()) {
+            position.setSportEventId(id);
+        }
         positionViewModel.insertAll(sportEventWithPosition.getPositions());
         getDetailsOfSportEvent(sportEventWithPosition);
-
     }
 
     @Override
     public void onSportEventPause(SportEventWithPosition sportEventWithPosition) {
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
     }
 
     private void showFragment(Fragment fragment, @StringRes int title) {
@@ -123,4 +170,8 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
     }
 
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        sportEventFragment.onLocationChanged(location);
+    }
 }
