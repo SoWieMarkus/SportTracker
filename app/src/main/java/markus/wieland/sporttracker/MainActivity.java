@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.view.View;
 
 import java.util.List;
 
@@ -42,6 +43,14 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
         sportEventAdapter = new SportEventAdapter(null);
         recyclerView.setAdapter(sportEventAdapter);
         startActivity(new Intent(this, RunActivity.class));
+
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, RunActivity.class));
+            }
+        });
     }
 
     @Override

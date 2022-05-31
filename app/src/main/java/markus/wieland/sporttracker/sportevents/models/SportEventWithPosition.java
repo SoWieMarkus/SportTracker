@@ -33,9 +33,9 @@ public class SportEventWithPosition implements Serializable {
         return positions.get(positions.size() - 1).getTimeStamp() - sportEvent.getStartTime();
     }
 
-    public double getCurrentSpeed() {
+    public float getCurrentSpeed() {
         if (positions.isEmpty()) return 0;
-        return (positions.get(positions.size() - 1).getDifferenceToLastLocation() / (getDurationSinceLastPosition() / 1000f)) * 3.6;
+        return (float) ((positions.get(positions.size() - 1).getDifferenceToLastLocation() / (getDurationSinceLastPosition() / 1000f)) * 3.6);
     }
 
     public float getTotalDistance() {

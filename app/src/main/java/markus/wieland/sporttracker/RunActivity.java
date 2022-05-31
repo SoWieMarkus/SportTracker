@@ -50,7 +50,7 @@ public class RunActivity extends DefaultActivity implements LocationListener {
 
     private long currentTime = 0;
     private long totalDistance = 0;
-    private static final long TIME_INTERVAL = 100;
+    private static final long TIME_INTERVAL = 1000;
 
     private SportEventWithPosition sportEvent;
     private WorkoutState currentState;
@@ -110,15 +110,18 @@ public class RunActivity extends DefaultActivity implements LocationListener {
     @Override
     public void onLocationChanged(@NonNull Location location) {
         if (currentState != WorkoutState.IS_RUNNING) return;
-        if (lastLocation == null) lastLocation = location;
+        if (lastLocation == null){
+            lastLocation = location;
+            return;
+        }
 
         double differenceToLastLocation = lastLocation.distanceTo(location);
         totalDistance += differenceToLastLocation;
         sportEvent.getPositions().add(new Position(location, differenceToLastLocation));
 
-        averageSpeed.setText(sportEvent.getCurrentSpeed() + "km/h");
+        averageSpeed.setText(TimeConverter.formatSpeed(sportEvent.getCurrentSpeed()));
         averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getCurrentSpeedPerKm()));
-        distance.setText(sportEvent.getTotalDistance()+"m");
+        distance.setText(TimeConverter.formatDistance(sportEvent.getTotalDistance()));
 
         lastLocation = location;
     }
@@ -147,7 +150,7 @@ public class RunActivity extends DefaultActivity implements LocationListener {
                 currentTime += TIME_INTERVAL;
                 runOnUiThread(() -> time.setText(TimeConverter.convertMillisToString(currentTime)));
             }
-        }, 0,100L);
+        }, 0,1000L);
     }
 
     private void stopTimer(){
@@ -174,7 +177,7 @@ public class RunActivity extends DefaultActivity implements LocationListener {
         stopTimer();
         sportEvent.getSportEvent().setEndTime(System.currentTimeMillis());
         sportEvent.getSportEvent().setTotalDistance(sportEvent.getTotalDistance());
-        sportEvent.getSportEvent().setAverageSpeed(totalDistance / (sportEvent.getSportEvent().getDuration()/1000f) * 3.6);
+        sportEvent.getSportEvent().setAverageSpeed((float) (totalDistance / (sportEvent.getSportEvent().getDuration()/1000f) * 3.6));
         sportEvent.getSportEvent().setAverageSpeedPerKm((sportEvent.getSportEvent().getDuration() / (1000f* 60)) / (totalDistance / 1000f));
         currentState = WorkoutState.STOPPED;
 

@@ -21,9 +21,9 @@ public class SportEvent implements DatabaseEntity, Serializable {
     @PrimaryKey(autoGenerate = true)
     private long id;
 
-    private double averageSpeed;
-    private double maxSpeed;
-    private double averageSpeedPerKm;
+    private float averageSpeed;
+    private float maxSpeed;
+    private float averageSpeedPerKm;
 
     private double totalDistance;
 

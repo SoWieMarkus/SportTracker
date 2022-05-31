@@ -11,7 +11,7 @@ import markus.wieland.sporttracker.positions.PositionDataAccessObject;
 import markus.wieland.sporttracker.sportevents.database.SportEventDataAccessObject;
 import markus.wieland.sporttracker.sportevents.models.SportEvent;
 
-@Database(entities = {SportEvent.class, Position.class}, version = 4)
+@Database(entities = {SportEvent.class, Position.class}, version = 5)
 public abstract class SportDatabase extends RoomDatabase {
 
     private static SportDatabase instance;

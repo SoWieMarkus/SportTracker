@@ -49,10 +49,10 @@ public class SportEventAdapter extends DefaultAdapter<SportEventWithPosition, Sp
 
         @Override
         public void bindItemToViewHolder(SportEventWithPosition sportEvent) {
-            distance.setText(sportEvent.getSportEvent().getTotalDistance() + "m");
+            distance.setText(TimeConverter.formatDistance((float) sportEvent.getSportEvent().getTotalDistance()));
             duration.setText(TimeConverter.convertMillisToString(sportEvent.getSportEvent().getDuration()));
-            averageSpeed.setText(sportEvent.getSportEvent().getAverageSpeed() + "km/h");
-            averageSpeedPerKm.setText(sportEvent.getSportEvent().getAverageSpeedPerKm() + "min/km");
+            averageSpeed.setText(TimeConverter.formatSpeed((sportEvent.getSportEvent().getAverageSpeed())));
+            averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getSportEvent().getAverageSpeedPerKm()));
         }
     }
 }
