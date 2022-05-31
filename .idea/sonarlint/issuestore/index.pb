@@ -15,8 +15,6 @@ o
 Uapp/src/main/java/markus/wieland/sporttracker/positions/PositionDataAccessObject.java,9\a\9ab8fe02550810fec5eff0d251558e7517954566
 ~
 Napp/src/main/java/markus/wieland/sporttracker/positions/PositionViewModel.java,e\f\ef02b4f294dd474eb89286d7344be53d73502f74
-j
-:app/src/main/java/markus/wieland/sporttracker/MapView.java,7\b\7b1e153d7d44f331d793e36ee8e9f2cdc42442f5
 
 Oapp/src/main/java/markus/wieland/sporttracker/positions/PositionRepository.java,b\3\b3236f4b57b45f737d8e11eed263f1bed26d4ffa
 ƒ

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SportTracker</string>
+    <string name="bottom_navigation_progress">Fortschritt</string>
+    <string name="bottom_navigation_statistics">Statistiken</string>
+    <string name="bottom_navigation_sport_event">Laufen</string>
+</resources>

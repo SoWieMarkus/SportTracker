@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import markus.wieland.defaultappelements.uielements.adapter.DefaultAdapter;
 import markus.wieland.defaultappelements.uielements.adapter.DefaultViewHolder;
+import markus.wieland.defaultappelements.uielements.adapter.iteractlistener.OnItemClickListener;
 import markus.wieland.defaultappelements.uielements.adapter.iteractlistener.OnItemInteractListener;
 import markus.wieland.sporttracker.R;
 import markus.wieland.sporttracker.helper.TimeConverter;
@@ -24,6 +25,11 @@ public class SportEventAdapter extends DefaultAdapter<SportEventWithPosition, Sp
     @Override
     public SportEventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new SportEventViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_sport_event, parent, false));
+    }
+
+    @Override
+    public OnItemClickListener<SportEventWithPosition> getOnItemInteractListener() {
+        return (OnItemClickListener<SportEventWithPosition>)super.getOnItemInteractListener();
     }
 
     public class SportEventViewHolder extends DefaultViewHolder<SportEventWithPosition> {
@@ -53,6 +59,8 @@ public class SportEventAdapter extends DefaultAdapter<SportEventWithPosition, Sp
             duration.setText(TimeConverter.convertMillisToString(sportEvent.getSportEvent().getDuration()));
             averageSpeed.setText(TimeConverter.formatSpeed((sportEvent.getSportEvent().getAverageSpeed())));
             averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getSportEvent().getAverageSpeedPerKm()));
+
+            itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(sportEvent));
         }
     }
 }

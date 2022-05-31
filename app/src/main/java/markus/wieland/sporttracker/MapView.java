@@ -18,11 +18,11 @@ public class MapView extends WebView {
     private final Gson gson;
 
     public MapView(@NonNull Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public MapView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public MapView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -35,14 +35,17 @@ public class MapView extends WebView {
         gson = new Gson();
     }
 
-    private void initialize(){
+    private void initialize() {
         loadUrl("file:///android_asset/map.html");
         getSettings().setJavaScriptEnabled(true);
         getSettings().setDomStorageEnabled(true);
     }
 
     public void showTracking(List<Position> positions) {
-        String tacking = gson.toJson(positions);
         loadUrl("javascript:showTracking(" + gson.toJson(positions) + ")");
+    }
+
+    public void showLiveTracking(List<Position> positions, Position currentLocation) {
+        loadUrl("javascript:showLiveTracking(" + gson.toJson(positions) + "," + gson.toJson(currentLocation)+")");
     }
 }

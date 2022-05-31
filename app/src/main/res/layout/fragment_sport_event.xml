@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RunActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -13,10 +12,10 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_run_time">
+        app:layout_constraintTop_toBottomOf="@+id/fragment_sport_event_time">
 
         <TextView
-            android:id="@+id/activity_run_average_speed"
+            android:id="@+id/fragment_sport_event_average_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -25,7 +24,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/activity_run_average_speed_per_km"
+            android:id="@+id/fragment_sport_event_average_speed_per_km"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -35,7 +34,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/activity_run_time"
+        android:id="@+id/fragment_sport_event_time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -49,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/activity_run_distance"
+        android:id="@+id/fragment_sport_event_distance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -63,28 +62,30 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/activity_run_stop"
+            android:id="@+id/fragment_sport_event_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Stop" />
 
         <Button
-            android:id="@+id/activity_run_pause"
+            android:id="@+id/fragment_sport_event_pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Pause" />
 
         <Button
-            android:id="@+id/activity_run_start"
+            android:id="@+id/fragment_sport_event_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -92,16 +93,11 @@
     </LinearLayout>
 
     <markus.wieland.sporttracker.MapView
-        android:id="@+id/mapView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_run_distance" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_sport_event_distance" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

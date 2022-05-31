@@ -39,6 +39,8 @@ public class RunActivity extends DefaultActivity implements LocationListener {
     private static final int LOCATION_REFRESH_DISTANCE = 5;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
 
+    private MapView mapView;
+
     private TextView time;
     private TextView distance;
     private TextView averageSpeed;
@@ -73,11 +75,12 @@ public class RunActivity extends DefaultActivity implements LocationListener {
 
     @Override
     public void initializeViews() {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         start.setOnClickListener(v -> start());
         stop.setOnClickListener(v -> stop());
         pause.setOnClickListener(v -> pause());
+
+        mapView = findViewById(R.id.mapView);
 
         positionViewModel = ViewModelProviders.of(this).get(PositionViewModel.class);
         sportEventViewModel = ViewModelProviders.of(this).get(SportEventViewModel.class);
@@ -109,11 +112,15 @@ public class RunActivity extends DefaultActivity implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        mapView.showLiveTracking(sportEvent.getPositions(), new Position(location, 0));
         if (currentState != WorkoutState.IS_RUNNING) return;
         if (lastLocation == null){
             lastLocation = location;
             return;
         }
+
+        // TODO Wenn pause dann was bei positionsänderung
+
 
         double differenceToLastLocation = lastLocation.distanceTo(location);
         totalDistance += differenceToLastLocation;
@@ -122,6 +129,8 @@ public class RunActivity extends DefaultActivity implements LocationListener {
         averageSpeed.setText(TimeConverter.formatSpeed(sportEvent.getCurrentSpeed()));
         averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getCurrentSpeedPerKm()));
         distance.setText(TimeConverter.formatDistance(sportEvent.getTotalDistance()));
+
+        mapView.showLiveTracking(sportEvent.getPositions(), sportEvent.getPositions().get(sportEvent.getPositions().size()-1));
 
         lastLocation = location;
     }
@@ -158,12 +167,14 @@ public class RunActivity extends DefaultActivity implements LocationListener {
     }
 
     private void pause(){
+        getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         stopTimer();
         currentState = WorkoutState.PAUSED;
         toggleButtonVisibility(currentState);
     }
 
     private void start(){
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if (currentState == WorkoutState.WAITING_TO_START) {
             sportEvent.getSportEvent().setStartTime(System.currentTimeMillis());
         }
@@ -174,6 +185,7 @@ public class RunActivity extends DefaultActivity implements LocationListener {
     }
 
     private void stop(){
+        getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         stopTimer();
         sportEvent.getSportEvent().setEndTime(System.currentTimeMillis());
         sportEvent.getSportEvent().setTotalDistance(sportEvent.getTotalDistance());

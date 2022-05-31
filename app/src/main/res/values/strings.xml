@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SportTracker</string>
+    <string name="bottom_navigation_progress">Progress</string>
+    <string name="bottom_navigation_statistics">Statistics</string>
+    <string name="bottom_navigation_sport_event">Run</string>
 </resources>
