@@ -50,4 +50,6 @@ public class SportEventWithPosition implements Serializable {
         return (getDuration() / (1000f * 60)) / (getTotalDistance() / 1000f);
     }
 
+
+
 }

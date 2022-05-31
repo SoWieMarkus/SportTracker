@@ -117,7 +117,7 @@ public class RunActivity extends DefaultActivity implements LocationListener {
         sportEvent.getPositions().add(new Position(location, differenceToLastLocation));
 
         averageSpeed.setText(sportEvent.getCurrentSpeed() + "km/h");
-        averageSpeedPerKm.setText(sportEvent.getCurrentSpeedPerKm() + "min/km");
+        averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getCurrentSpeedPerKm()));
         distance.setText(sportEvent.getTotalDistance()+"m");
 
         lastLocation = location;
