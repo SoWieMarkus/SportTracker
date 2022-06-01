@@ -33,24 +33,16 @@ function showTracking(tracking) {
 }
 
 function addMarker(coordinate) {
-    let marker = L.marker(coordinate);
-    marker.addTo(map);
+    let marker =
     markers.push(marker);
     return marker;
 }
 
 
-let markers = []
-function showLiveTracking(tracking, location){
-
-    map.setView([location.latitude, location.longitude], 18);
-
-    for (let marker of markers) {
-        map.removeLayer(marker);
-    }
-
-    addMarker([location.latitude, location.longitude]);
-
+let currentMarker, currentLine;
+function showLiveTracking(tracking){
+    if (currentLine !== undefined)
+        map.removeLayer(currentLine);
 
     let path = [];
 
@@ -58,13 +50,18 @@ function showLiveTracking(tracking, location){
         path.push([position.latitude,position.longitude]);
     }
 
-    let line = L.polyline(path, {
+    currentLine = L.polyline(path, {
         color: "#005d79",
         weight: 5,
         smoothFactor: 1
         //dashArray: '10, 10', dashOffset: '0'
     }).addTo(map);
 
-    markers.push(line);
+}
 
+function updateUserPosition(location){
+    if (currentMarker !== undefined)
+        map.removeLayer(currentMarker);
+    map.setView([location.latitude, location.longitude], 18);
+    currentMarker = L.marker([location.latitude, location.longitude]).addTo(map);
 }

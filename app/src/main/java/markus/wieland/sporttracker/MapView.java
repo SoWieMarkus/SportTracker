@@ -1,6 +1,7 @@
 package markus.wieland.sporttracker;
 
 import android.content.Context;
+import android.location.Location;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 
@@ -45,7 +46,11 @@ public class MapView extends WebView {
         loadUrl("javascript:showTracking(" + gson.toJson(positions) + ")");
     }
 
-    public void showLiveTracking(List<Position> positions, Position currentLocation) {
-        loadUrl("javascript:showLiveTracking(" + gson.toJson(positions) + "," + gson.toJson(currentLocation)+")");
+    public void showLiveTracking(List<Position> positions) {
+        loadUrl("javascript:showLiveTracking(" + gson.toJson(positions) + ")");
+    }
+
+    public void showUserPosition(Position currentLocation) {
+        loadUrl("javascript:updateUserPosition(" + gson.toJson(currentLocation) + ")");
     }
 }

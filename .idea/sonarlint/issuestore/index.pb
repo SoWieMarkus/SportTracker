@@ -27,9 +27,23 @@ q
 Aapp/src/main/java/markus/wieland/sporttracker/DetailActivity.java,a\6\a6a53e91bb01dcbd02ad239da0d3186f2a2bae95
 w
 Gapp/src/main/java/markus/wieland/sporttracker/helper/TimeConverter.java,0\8\08edbcbbcad8e4b7d2485f173c47b26d37e1e49c
-Ä
-Papp/src/main/java/markus/wieland/sporttracker/sportevents/models/SportEvent.java,3\1\312ed695c3e82ee8b487ab479b12d37794b8aabd
-y
-Iapp/src/main/java/markus/wieland/sporttracker/database/SportDatabase.java,2\f\2f21e0c7919d191cee2c96e5ba8695003c4fa092
 Å
 Qapp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventListener.java,8\c\8c19a30548a8c632975a42bd30babe13e8577cf4
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+t
+Dapp/src/main/java/markus/wieland/sporttracker/SportEventDetails.java,6\5\650f46eb36e5d2ae0dd49c6384e017c81e321d6c
+í
+bapp/src/main/java/markus/wieland/sporttracker/sportevents/database/SportEventDataAccessObject.java,5\4\5493b57b0c669ff4b186f7f631a94166475d3eb8
+å
+\app/src/main/java/markus/wieland/sporttracker/sportevents/database/SportEventRepository.java,9\d\9d02e8e1fbd4730fca31dfb5acd8550cfdb0d1fb
+y
+Iapp/src/main/java/markus/wieland/sporttracker/database/SportDatabase.java,2\f\2f21e0c7919d191cee2c96e5ba8695003c4fa092
+Ä
+Papp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventAdapter.java,d\e\deed4dfc36d5cd2d45725c4ed4ea4688b1269163
+å
+\app/src/main/java/markus/wieland/sporttracker/sportevents/models/SportEventWithPosition.java,e\6\e66c0371cd7bb1f772ed4a7f536c4e043a38fc62
+Ä
+Papp/src/main/java/markus/wieland/sporttracker/sportevents/models/SportEvent.java,3\1\312ed695c3e82ee8b487ab479b12d37794b8aabd
+ã
+[app/src/main/java/markus/wieland/sporttracker/sportevents/database/SportEventViewModel.java,c\7\c759c99bf20cfe144f8eb9c2f8e8e489e24a1c02

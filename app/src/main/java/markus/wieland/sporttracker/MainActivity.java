@@ -76,8 +76,6 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
     @Override
     public void execute() {
         sportEventViewModel.getAllSportEvents().observe(this, this);
-        startActivity(new Intent(this, RunActivity.class));
-
         registerLocationManager();
     }
 
@@ -144,6 +142,7 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
     @Override
     public void onSportEventStart(SportEventWithPosition sportEventWithPosition) {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        bottomNavigationView.setVisibility(View.GONE);
     }
 
     @Override
@@ -156,6 +155,9 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
         }
         positionViewModel.insertAll(sportEventWithPosition.getPositions());
         getDetailsOfSportEvent(sportEventWithPosition);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+        sportEventFragment = new SportEventFragment(this);
+        selectFragment(R.id.menu_bottom_navigation_sport_event);
     }
 
     @Override

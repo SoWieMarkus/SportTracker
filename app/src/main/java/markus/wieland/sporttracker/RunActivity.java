@@ -112,7 +112,6 @@ public class RunActivity extends DefaultActivity implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        mapView.showLiveTracking(sportEvent.getPositions(), new Position(location, 0));
         if (currentState != WorkoutState.IS_RUNNING) return;
         if (lastLocation == null){
             lastLocation = location;
@@ -130,7 +129,6 @@ public class RunActivity extends DefaultActivity implements LocationListener {
         averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getCurrentSpeedPerKm()));
         distance.setText(TimeConverter.formatDistance(sportEvent.getTotalDistance()));
 
-        mapView.showLiveTracking(sportEvent.getPositions(), sportEvent.getPositions().get(sportEvent.getPositions().size()-1));
 
         lastLocation = location;
     }
