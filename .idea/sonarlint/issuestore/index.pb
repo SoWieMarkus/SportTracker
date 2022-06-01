@@ -41,8 +41,6 @@ y
 Iapp/src/main/java/markus/wieland/sporttracker/database/SportDatabase.java,2\f\2f21e0c7919d191cee2c96e5ba8695003c4fa092
 €
 Papp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventAdapter.java,d\e\deed4dfc36d5cd2d45725c4ed4ea4688b1269163
-Œ
-\app/src/main/java/markus/wieland/sporttracker/sportevents/models/SportEventWithPosition.java,e\6\e66c0371cd7bb1f772ed4a7f536c4e043a38fc62
 €
 Papp/src/main/java/markus/wieland/sporttracker/sportevents/models/SportEvent.java,3\1\312ed695c3e82ee8b487ab479b12d37794b8aabd
 ‹

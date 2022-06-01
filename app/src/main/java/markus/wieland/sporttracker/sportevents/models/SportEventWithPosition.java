@@ -59,7 +59,7 @@ public class SportEventWithPosition implements Serializable {
         float totalDuration = getDuration();
 
         getSportEvent().setEndTime(System.currentTimeMillis());
-        getSportEvent().setTotalDistance(sportEvent.getTotalDistance());
+        getSportEvent().setTotalDistance(getTotalDistance());
         getSportEvent().setAverageSpeed((float) (totalDistance / (totalDuration / 1000f) * 3.6));
         getSportEvent().setAverageSpeedPerKm((totalDuration / (1000f * 60)) / (totalDistance / 1000f));
     }
