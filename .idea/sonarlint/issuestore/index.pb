@@ -9,8 +9,6 @@ A
 gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
-o
-?app/src/main/java/markus/wieland/sporttracker/WorkoutState.java,5\2\521c17c95956d16467ac678f2fdfeb0128fe44bf
 …
 Uapp/src/main/java/markus/wieland/sporttracker/positions/PositionDataAccessObject.java,9\a\9ab8fe02550810fec5eff0d251558e7517954566
 ~
@@ -31,8 +29,6 @@ Gapp/src/main/java/markus/wieland/sporttracker/helper/TimeConverter.java,0\8\08
 Qapp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventListener.java,8\c\8c19a30548a8c632975a42bd30babe13e8577cf4
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-t
-Dapp/src/main/java/markus/wieland/sporttracker/SportEventDetails.java,6\5\650f46eb36e5d2ae0dd49c6384e017c81e321d6c
 ’
 bapp/src/main/java/markus/wieland/sporttracker/sportevents/database/SportEventDataAccessObject.java,5\4\5493b57b0c669ff4b186f7f631a94166475d3eb8
 Œ

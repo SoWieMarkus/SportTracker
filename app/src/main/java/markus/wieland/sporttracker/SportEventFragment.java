@@ -6,8 +6,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import markus.wieland.defaultappelements.uielements.fragments.DefaultFragment;
 import markus.wieland.sporttracker.helper.CountUpListener;
@@ -22,7 +20,7 @@ public class SportEventFragment extends DefaultFragment implements CountUpListen
 
 
     private boolean wasPaused;
-    private SportEventListener sportEventListener;
+    private final SportEventListener sportEventListener;
 
     private TextView time;
     private TextView distance;

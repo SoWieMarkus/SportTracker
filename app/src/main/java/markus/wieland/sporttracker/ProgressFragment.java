@@ -29,7 +29,6 @@ public class ProgressFragment extends DefaultFragment {
     @Override
     public void initializeViews() {
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(sportEventAdapter);
 
         if (getActivity() == null) return;
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -37,6 +36,6 @@ public class ProgressFragment extends DefaultFragment {
 
     @Override
     public void execute() {
-
+        recyclerView.setAdapter(sportEventAdapter);
     }
 }
