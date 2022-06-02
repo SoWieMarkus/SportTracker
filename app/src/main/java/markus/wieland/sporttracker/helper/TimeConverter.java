@@ -19,17 +19,16 @@ public class TimeConverter {
         int minutes = (int) speed;
         float secondsAsDecimal = speed - minutes;
         int seconds = (int)(secondsAsDecimal * 60);
-        return String.format("%02d'%02d\" /km",minutes, seconds);
+        return String.format("%02d'%02d\"",minutes, seconds);
     }
 
     public static String formatDistance(float distance) {
-        if (distance < 1000f) return (int)distance + "m";
         float distanceInKm = distance / 1000f;
-        return String.format("%.2fkm",distanceInKm);
+        return String.format("%.2f",distanceInKm);
     }
 
     public static String formatSpeed(float speed) {
-        return String.format("%.2f km/h", speed);
+        return String.format("%.2f", speed);
     }
 
 

@@ -19,12 +19,8 @@ Oapp/src/main/java/markus/wieland/sporttracker/positions/PositionRepository.java
 Sapp/src/main/java/markus/wieland/sporttracker/sportevents/InsertSportEventTask.java,e\6\e68e982c94aeaadd6ca0482b396e7dde4826da02
 
 Oapp/src/main/java/markus/wieland/sporttracker/positions/InsertAllItemsTask.java,1\c\1ce2181a8768ce8b9b588e3b02ccff23b391853d
-|
-Lapp/src/main/java/markus/wieland/sporttracker/positions/models/Position.java,d\b\db38071bd03ce8d395a0dfc133a4c3f56efb3fdf
 q
 Aapp/src/main/java/markus/wieland/sporttracker/DetailActivity.java,a\6\a6a53e91bb01dcbd02ad239da0d3186f2a2bae95
-w
-Gapp/src/main/java/markus/wieland/sporttracker/helper/TimeConverter.java,0\8\08edbcbbcad8e4b7d2485f173c47b26d37e1e49c
 Å
 Qapp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventListener.java,8\c\8c19a30548a8c632975a42bd30babe13e8577cf4
 P
@@ -37,7 +33,5 @@ y
 Iapp/src/main/java/markus/wieland/sporttracker/database/SportDatabase.java,2\f\2f21e0c7919d191cee2c96e5ba8695003c4fa092
 Ä
 Papp/src/main/java/markus/wieland/sporttracker/sportevents/SportEventAdapter.java,d\e\deed4dfc36d5cd2d45725c4ed4ea4688b1269163
-Ä
-Papp/src/main/java/markus/wieland/sporttracker/sportevents/models/SportEvent.java,3\1\312ed695c3e82ee8b487ab479b12d37794b8aabd
 ã
 [app/src/main/java/markus/wieland/sporttracker/sportevents/database/SportEventViewModel.java,c\7\c759c99bf20cfe144f8eb9c2f8e8e489e24a1c02
