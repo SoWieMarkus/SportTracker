@@ -123,15 +123,15 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
     }
 
     private boolean selectFragment(@IdRes int itemId) {
+
+        // can't use switch statement because of dynamic ids (wtf android?)
+
         if (itemId == R.id.menu_bottom_navigation_progress) {
             showFragment(progressFragment, R.string.bottom_navigation_progress);
             return true;
         }
         if (itemId == R.id.menu_bottom_navigation_sport_event) {
             showFragment(sportEventFragment, R.string.bottom_navigation_sport_event);
-            return true;
-        }
-        if (itemId == R.id.menu_bottom_navigation_statistics) {
             return true;
         }
 
@@ -163,8 +163,6 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
     @Override
     public void onSportEventPause(SportEventWithPosition sportEventWithPosition) {
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-
     }
 
     private void showFragment(Fragment fragment, @StringRes int title) {

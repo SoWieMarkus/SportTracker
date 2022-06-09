@@ -1,5 +1,6 @@
 function initializeMap() {
     let mapOptions = {
+        zoomControl: false,
         center: [50.95, 13.45], // Zentrum der Karte
         zoom: 8, //Zoomlevel
         layers: [] // Layer der Map, hier erstmal leer, wird gleich erweitert.

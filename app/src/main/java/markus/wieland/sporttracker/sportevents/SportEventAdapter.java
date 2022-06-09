@@ -37,7 +37,6 @@ public class SportEventAdapter extends DefaultAdapter<SportEventWithPosition, Sp
         private TextView distance;
         private TextView duration;
         private TextView date;
-        private TextView averageSpeed;
         private TextView averageSpeedPerKm;
 
         public SportEventViewHolder(@NonNull View itemView) {
@@ -49,15 +48,14 @@ public class SportEventAdapter extends DefaultAdapter<SportEventWithPosition, Sp
             distance = findViewById(R.id.item_sport_event_distance);
             duration = findViewById(R.id.item_sport_event_duration);
             date = findViewById(R.id.item_sport_event_date);
-            averageSpeed = findViewById(R.id.item_sport_event_average_speed);
             averageSpeedPerKm = findViewById(R.id.item_sport_event_average_speed_per_km);
         }
 
         @Override
         public void bindItemToViewHolder(SportEventWithPosition sportEvent) {
+            date.setText(sportEvent.getSportEvent().getDate());
             distance.setText(TimeConverter.formatDistance((float) sportEvent.getSportEvent().getTotalDistance()));
             duration.setText(TimeConverter.convertMillisToString(sportEvent.getSportEvent().getDuration()));
-            averageSpeed.setText(TimeConverter.formatSpeed((sportEvent.getSportEvent().getAverageSpeed())));
             averageSpeedPerKm.setText(TimeConverter.formatSpeedPerKm(sportEvent.getSportEvent().getAverageSpeedPerKm()));
 
             itemView.setOnClickListener(view -> getOnItemInteractListener().onClick(sportEvent));
