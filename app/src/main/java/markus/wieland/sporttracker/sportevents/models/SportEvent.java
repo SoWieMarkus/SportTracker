@@ -44,4 +44,9 @@ public class SportEvent implements DatabaseEntity, Serializable {
     public String getDate() {
         return new SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault()).format(new Date(startTime));
     }
+
+    @Ignore
+    public String getDateForGraph() {
+        return new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date(startTime));
+    }
 }

@@ -20,6 +20,8 @@ import android.location.LocationManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -111,6 +113,7 @@ public class MainActivity extends DefaultActivity implements Observer<List<Sport
     @Override
     public void onChanged(List<SportEventWithPosition> sportEventWithPositions) {
         progressFragment.getSportEventAdapter().submitList(sportEventWithPositions);
+
     }
 
     public void getDetailsOfSportEvent(SportEventWithPosition sportEventWithPosition) {

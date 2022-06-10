@@ -37,7 +37,7 @@ public class MapView extends WebView {
     }
 
     private void initialize() {
-        loadUrl("file:///android_asset/map.html");
+        loadUrl("file:///android_asset/maps/map.html");
         getSettings().setJavaScriptEnabled(true);
         getSettings().setDomStorageEnabled(true);
     }
